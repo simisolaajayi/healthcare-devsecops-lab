@@ -95,12 +95,20 @@ You need a [DockerHub](https://hub.docker.com/) account to store the container i
 You need a free [SonarCloud](https://sonarcloud.io) account:
 
 1. Go to [sonarcloud.io](https://sonarcloud.io) and sign in with your GitHub account
+![image](image.png)
 2. Click **"+"** > **"Analyze new project"**
+![image](image-1.png)
 3. Import your forked repository
+![image](image-2.png)
+![image](image-3.png)
 4. Copy the **organization** and **project key** from the SonarCloud dashboard
+![image](image-5.png)
 5. Update `sonar-project.properties` with your organization and project key
+![image](image-6.png)
 6. In SonarCloud, go to **My Account** > **Security** > generate a token
+![image](image-7.png)
 7. Add that token as `SONAR_TOKEN` in your GitHub repository secrets
+![image](image-8.png)
 
 ### 5. Tools
 
@@ -128,6 +136,7 @@ Edit `kubernetes/deployment.yaml` and replace the image placeholder with your Do
 ```yaml
 image: <your-dockerhub-username>/meditrack-api:latest
 ```
+![image](image-4.png)
 
 ### Step 3 — Update SonarCloud Configuration
 
@@ -137,6 +146,7 @@ Edit `sonar-project.properties` and replace the placeholders:
 sonar.organization=<your-sonarcloud-organization>
 sonar.projectKey=<your-sonarcloud-project-key>
 ```
+![image](image-6.png)
 
 Commit and push:
 
@@ -157,6 +167,7 @@ In your forked repository, go to **Settings** > **Secrets and variables** > **Ac
 | `AWS_ACCESS_KEY_ID` | Your IAM user access key ID |
 | `AWS_SECRET_ACCESS_KEY` | Your IAM user secret access key |
 | `SONAR_TOKEN` | Your SonarCloud token (from Prerequisites step 4) |
+![image](image-9.png)
 
 > **Note:** `GITLEAKS_LICENSE` is optional. Gitleaks works without a license key on public repositories. For private repos, get a free license at [gitleaks.io](https://gitleaks.io).
 
