@@ -206,18 +206,16 @@ jobs:
         run: |
           kubectl apply -f kubernetes/namespace.yaml
           kubectl apply -f kubernetes/configmap.yaml
-          kubectl apply -f kubernetes/deployment.yaml
           kubectl apply -f kubernetes/service.yaml
           kubectl apply -f kubernetes/servicemonitor.yaml
 
-      - name: Update deployment image
+      - name: Deploy with correct image
         run: |
-          kubectl set image deployment/meditrack-api \
-            meditrack-api=${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-            -n ${{ env.K8S_NAMESPACE }}
+          export DEPLOY_IMAGE=${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          sed "s|<your-dockerhub-username>/meditrack-api:v1.0.0|${DEPLOY_IMAGE}|g" kubernetes/deployment.yaml | kubectl apply -f -
 
       - name: Wait for rollout
-        run: kubectl rollout status deployment/meditrack-api -n ${{ env.K8S_NAMESPACE }} --timeout=120s
+        run: kubectl rollout status deployment/meditrack-api -n ${{ env.K8S_NAMESPACE }} --timeout=180s
 
       - name: Verify deployment
         run: |
