@@ -22,15 +22,10 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: meditrack-api
-<<<<<<< HEAD
           # TODO: Replace <your-dockerhub-username> with your DockerHub username
           # The pipeline will update this to use the commit SHA (e.g., :abc123)
           image: lincontech/meditrack-api:v1.0.0
-=======
-          # The pipeline substitutes this placeholder with your DockerHub username
-          # and the commit SHA before deploying (e.g., johndoe/meditrack-api:abc123)
-          image: <your-dockerhub-username>/meditrack-api:v1.0.0
->>>>>>> de785d71a75e2d1d7f9ba2d6fdb0d1425c7585ab
+
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
