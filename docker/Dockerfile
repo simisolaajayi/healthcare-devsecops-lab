@@ -8,7 +8,7 @@ RUN npm ci --omit=dev \
 
 FROM node:20-alpine
 
-RUN addgroup -S meditrack && adduser -S meditrack -G meditrack
+RUN addgroup -g 1001 -S meditrack && adduser -u 1001 -S meditrack -G meditrack
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ COPY app/public/ ./public/
 COPY app/vulnerabilities/ ./vulnerabilities/
 
 RUN chown -R meditrack:meditrack /app
-USER meditrack
+USER 1001
 
 EXPOSE 3000
 
