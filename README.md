@@ -1,6 +1,6 @@
 # Healthcare DevSecOps Lab — Securing the MediTrack Pipeline
 
-A hands-on DevSecOps lab that embeds security into every stage of a CI/CD pipeline. Students take the MediTrack patient appointment API from the [Healthcare CI/CD Lab](https://github.com/anmutetech/healthcare-cicd-lab) and layer on 5 security gates using industry-standard tools.
+A hands-on DevSecOps lab that embeds security into every stage of a CI/CD pipeline. Students take the MediTrack patient appointment API from the [Healthcare CI/CD Lab](https://github.com/anmutetech/healthcare-cicd-lab) and layer on 5 security gates using industry-standard tools..
 
 ## Scenario
 
